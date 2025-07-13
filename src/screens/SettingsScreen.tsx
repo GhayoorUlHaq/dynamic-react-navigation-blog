@@ -1,18 +1,28 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {StackActions, useNavigation} from '@react-navigation/native';
+import ChangeLanguageScreen from './ChangeLanguageScreen';
 
 const SettingsScreen = () => {
   const navigation = useNavigation<any>();
 
   const navigateToChangeLanguage = () => {
-    navigation.navigate('ChangeLanguage');
+    navigation.dispatch(
+      StackActions.push('ScreenStack', {
+        screen: 'Screen',
+        params: {
+          component: ChangeLanguageScreen,
+        },
+      }),
+    );
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
-      <TouchableOpacity style={styles.button} onPress={navigateToChangeLanguage}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={navigateToChangeLanguage}>
         <Text style={styles.buttonText}>Change Language</Text>
       </TouchableOpacity>
     </View>
@@ -39,7 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
@@ -50,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SettingsScreen; 
+export default SettingsScreen;

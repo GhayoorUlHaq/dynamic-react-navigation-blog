@@ -1,12 +1,16 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import FeedModalDetailScreen from './FeedModalDetailScreen.tsx';
+import ChangeEmailScreen from './ChangeEmailScreen.tsx';
 
 const ProfileModalScreen = () => {
   const navigation = useNavigation<any>();
 
   const navigateToChangeEmail = () => {
-    navigation.navigate('ChangeEmail');
+    navigation.navigate('ModalScreen', {
+      component: ChangeEmailScreen,
+    });
   };
 
   const closeModal = () => {
@@ -18,11 +22,11 @@ const ProfileModalScreen = () => {
       <View style={styles.modalContent}>
         <Text style={styles.title}>Profile Modal</Text>
         <Text style={styles.subtitle}>Add your profile details</Text>
-        
+
         <TouchableOpacity style={styles.button} onPress={navigateToChangeEmail}>
           <Text style={styles.buttonText}>Change Email</Text>
         </TouchableOpacity>
-        
+
         <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
           <Text style={styles.closeButtonText}>Close Modal</Text>
         </TouchableOpacity>
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
     width: '80%',
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
@@ -86,7 +90,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
@@ -97,4 +101,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileModalScreen; 
+export default ProfileModalScreen;

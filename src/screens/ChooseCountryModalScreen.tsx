@@ -1,12 +1,15 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import ChooseLanguageScreen from './ChooseLanguageScreen.tsx';
 
 const ChooseCountryModalScreen = () => {
   const navigation = useNavigation<any>();
 
   const navigateToChooseLanguage = () => {
-    navigation.navigate('ChooseLanguage');
+    navigation.navigate('ModalScreen', {
+      component: ChooseLanguageScreen,
+    });
   };
 
   const closeModal = () => {
@@ -18,11 +21,13 @@ const ChooseCountryModalScreen = () => {
       <View style={styles.modalContent}>
         <Text style={styles.title}>Choose Country</Text>
         <Text style={styles.subtitle}>Select your country</Text>
-        
-        <TouchableOpacity style={styles.button} onPress={navigateToChooseLanguage}>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={navigateToChooseLanguage}>
           <Text style={styles.buttonText}>Choose Language</Text>
         </TouchableOpacity>
-        
+
         <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
           <Text style={styles.closeButtonText}>Close Modal</Text>
         </TouchableOpacity>
@@ -46,7 +51,7 @@ const styles = StyleSheet.create({
     width: '80%',
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
@@ -70,7 +75,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
@@ -86,7 +91,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
@@ -97,4 +102,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChooseCountryModalScreen; 
+export default ChooseCountryModalScreen;

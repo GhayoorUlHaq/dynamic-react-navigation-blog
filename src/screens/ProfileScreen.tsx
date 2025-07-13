@@ -1,12 +1,20 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {StackActions, useNavigation} from '@react-navigation/native';
+import ProfileModalScreen from './ProfileModalScreen.tsx';
 
 const ProfileScreen = () => {
   const navigation = useNavigation<any>();
 
   const openModal = () => {
-    navigation.navigate('ProfileModal');
+    navigation.dispatch(
+      StackActions.push('ModalStack', {
+        screen: 'Modal',
+        params: {
+          component: ProfileModalScreen,
+        },
+      }),
+    );
   };
 
   return (
@@ -39,7 +47,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
@@ -50,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileScreen; 
+export default ProfileScreen;
